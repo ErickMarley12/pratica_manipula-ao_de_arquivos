@@ -1,28 +1,27 @@
-from manipulando_arquivos.menu import menu
+from menu import menu
+from arquivo import cadastrar, listar
+
+
+##FORMA DE ORGANIZAR O CÓDIGO MELHOR. CONSIGO DIVIDIR EM ARQUIVO,INTERFACE,MENU E MAIN. mamão com açucar 
 
 def main():
-
-    nomes = []
-
     while True:
         opcao = menu()
+
         if opcao == "1":
-            nome = input("Digite o seu nome:").strip().title()
-            nomes.append(nome)
+            nome = input("Digite o seu nome: ").strip().title()
+            cadastrar(nome)
 
-            with open("cadastros.txt", "a") as arquivo:
-
-                arquivo.write(nome + "\n")
         elif opcao == "2":
-            with open("cadastros.txt", "r") as arquivo:
-                print(arquivo.read())
-     
-            print(f"cadastrados: {nomes}")      
+            print("\nCADASTROS:")
+            print(listar())
         elif opcao == "3":
-            print("Saindo do programa...")
-            break 
+            print("Finalizando o programa...")
+            break
+        
         else:
             print("Opção inválida. Tente novamente.")
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": #até agora n entendi direito. mas faz o código executar oq eu quero :0
+
+    main() 
